@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapıda Ödeme Formu</title>
+
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+     (function(){
+        emailjs.init("voWGxkSoaSMj_Hsk4"); // EmailJS User ID buraya
+     })();
+  </script>
+
+  <style>
+    /* Genel sıfırlama */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* Container */
+    .container {
+      background-color: #fff;
+      max-width: 500px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Üst görsel */
+    .top-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    /* Form elemanları */
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    form button {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    form button:hover {
+      background-color: #218838;
+    }
+
+    /* KVKK checkbox */
+    label {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+    }
+
+    label input {
+      width: auto;
+      margin-right: 8px;
+    }
+
+    /* Mobil uyumluluk */
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 20px;
+      }
+      form input, form textarea, form button {
+        font-size: 14px;
+        padding: 10px;
+      }
+      .top-image {
+        max-height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Üst Görsel -->
+    <img src="urun.jpg" alt="Üst Görsel" class="top-image">
+
+    <h2>Sipariş Formu</h2>
+
+    <form id="orderForm">
+      <input type="text" name="fullname" placeholder="Ad Soyad" required>
+      <input type="tel" name="phone" placeholder="Telefon" required>
+      <textarea name="address" placeholder="Adres" required></textarea>
+      <input type="text" name="product" value="Ürün 1" readonly>
+
+      <!-- KVKK onay kutusu -->
+      <label>
+        <input type="checkbox" name="kvkk" required>
+        Kişisel verilerimin işlenmesini ve saklanmasını kabul ediyorum.
+      </label>
+
+      <button type="submit">Gönder</button>
+    </form>
+  </div>
+
+  <script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+
+    // Supabase bilgileri
+    const SUPABASE_URL = "https://vviqfnmehebxsynwnhpa.supabase.co"
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2aXFmbm1laGVieHN5bnduaHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1Mzk4NDgsImV4cCI6MjA3ODExNTg0OH0.1FSjUcOqylbHbTDIEbIvwpJiQVnO2zlJkexQxf5ywbA"
+
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
+
+    document.querySelector("#orderForm").addEventListener("submit", async (e) => {
+      e.preventDefault()
+      const form = e.target
+
+      // KVKK onayı kontrolü
+      if (!form.kvkk.checked) {
+        alert("Lütfen KVKK onayını işaretleyin!")
+        return
+      }
+
+      const data = {
+        fullname: form.fullname.value,
+        phone: form.phone.value,
+        address: form.address.value,
+        product: form.product.value
+      }
+
+      // Supabase kaydı
+      const { error } = await supabase.from("orders").insert([data])
+      if (error) {
+        alert("Bir hata oluştu: " + error.message)
+        return
+      }
+
+      // EmailJS ile bildirim gönder
+      emailjs.send("service_whgj7fa", "template_jao8nx4", data)
+        .then(function(response) {
+          console.log('Email gönderildi!', response.status, response.text)
+          alert("Sipariş başarıyla kaydedildi ve bildirildi 🎉")
+          form.reset()
+        }, function(error) {
+          console.log('Email gönderilemedi...', error)
+          alert("Sipariş kaydedildi ama email gönderilemedi.")
+        })
+    })
+  </script>
+</body>
+</html>
