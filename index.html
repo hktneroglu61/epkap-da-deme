@@ -53,13 +53,26 @@
       color:rgb(207, 16, 16);
     }
 
+    /* Üstteki 3 büyük görsel */
+    .top-three-images img {
+      width: 100%;
+      height: auto; /* 🔧 Yüksekliği otomatik, kırpma yok */
+      max-width: 100%;
+      object-fit: contain; /* 🔧 Kırpmadan sığdır */
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: block;
+    }
+
     /* Üst görsel */
     .top-image {
       width: 100%;
-      max-height: 300px;
-      object-fit: cover;
+      height: auto; /* 🔧 Yüksekliği otomatik */
+      max-width: 100%;
+      object-fit: contain; /* 🔧 Kırpmadan sığdır */
       border-radius: 10px;
       margin-bottom: 20px;
+      display: block;
     }
 
     /* Form elemanları */
@@ -110,69 +123,73 @@
         font-size: 14px;
         padding: 10px;
       }
+      .top-three-images img,
       .top-image {
-        max-height: 200px;
+        max-height: none; /* 🔧 Mobilde de kırpma yok */
       }
     }
 
     /* Yeni tablo stil */
     .image-text-section {
       display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 20px;
       margin-top: 30px;
     }
 
-    .image-text-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 sütun */
-  gap: 20px;
-  margin-top: 30px;
-}
+    .image-text-box {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      margin: 0 auto;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: hidden;
+    }
 
-.image-text-box {
-  background-color: #f9f9f9;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
-  max-width: 250px; /* Kutuların maksimum genişliği */
-  margin: 0 auto;  /* Ortalamak için */
-  min-height: 200px; /* Sabit yükseklik */
-  height: 200px; /* Sabit yükseklik */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Görsel ve yazıyı düzgün hizalar */
-}
+    .image-text-box img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      object-fit: contain;
+      display: block;
+    }
 
-.image-text-box img {
-  width: 100%; /* Görsellerin genişliğini kutuya uydur */
-  height: 150px; /* Görsellerin yüksekliğini sabitle */
-  object-fit: cover; /* Görselleri kutuya sığdırarak, taşmadan kesme yapar */
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
+    .image-text-box p {
+      font-size: 14px;
+      color: #333;
+      margin: 0;
+      text-align: center;
+      word-break: break-word;
+    }
 
-.image-text-box p {
-  font-size: 14px;  /* Yazı boyutunu küçült */
-  color: #333;
-  margin: 0;
-  flex-grow: 1;  /* Yazının kutuyu doldurmasını sağlar */
-  text-align: center;  /* Yazıyı ortalamak */
-}
-
-/* Mobil uyumlu 4 görsel için */
-@media (max-width: 768px) {
-  .image-text-section {
-    grid-template-columns: 1fr;
-  }
-}
+    /* Mobil görünüm */
+    @media (max-width: 768px) {
+      .image-text-section {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Üst Görsel -->
-    <img src="urun.jpg" alt="Üst Görsel" class="top-image">
+
+    <!-- Üstte 3 yeni büyük görsel -->
+    <div class="top-three-images">
+      <img src="24parça.JPG" alt="Üst Görsel 1">
+      <img src="çelik.JPG" alt="Üst Görsel 2">
+      <img src="demir.JPG" alt="Üst Görsel 3">
+    </div>
+
+    <!-- Mevcut ana büyük görsel -->
+    <img src="dar.JPG" alt="Üst Görsel" class="top-image">
 
     <h2>Sipariş Formu</h2>
 
@@ -180,7 +197,7 @@
       <input type="text" name="fullname" placeholder="Ad Soyad" required>
       <input type="tel" name="phone" placeholder="Telefon" required>
       <textarea name="address" placeholder="Adres" required></textarea>
-      <input type="text" name="product" value="Ürün 1" readonly>
+      <input type="text" name="product" value="KIMMERR-PLUS 24 PARÇA MATKAP SET" readonly>
 
       <!-- KVKK onay kutusu -->
       <label>
@@ -193,34 +210,33 @@
 
     <h3>Elektronikpazar sosyal medya hesaplarını takip ederek kampanyalardan haberdar olabilirsiniz</h3>
     
-    <!-- Yeni eklenen görsel ve yazı bölümü -->
+    <!-- Görsel ve yazı bölümü -->
     <div class="image-text-section">
-  <div class="image-text-box">
-    <!-- Görselin etrafını <a> etiketi ile sardık -->
-    <a href="https://www.instagram.com/elektronikpazarr" target="_blank">
-      <img src="instagram.png" alt="Görsel 1">
-    </a>
-    <p>elektronikpazarr</p>
-  </div>
-  <div class="image-text-box">
-    <a href="https://www.youtube.com/@Elektronikpazar.1" target="_blank">
-      <img src="youtube.png" alt="Görsel 2">
-    </a>
-    <p>elektronikpazar.1</p>
-  </div>
-  <div class="image-text-box">
-    <a href="https://twitter.com/elektronikpzr" target="_blank">
-      <img src="twitter.png" alt="Görsel 3">
-    </a>
-    <p>elektronikpzr</p>
-  </div>
-  <div class="image-text-box">
-    <a href="https://www.tiktok.com/@elektronikpazarrr" target="_blank">
-      <img src="social-media.png" alt="Görsel 4">
-    </a>
-    <p>elektronikpazarrr</p>
-  </div>
-</div>
+      <div class="image-text-box">
+        <a href="https://www.instagram.com/elektronikpazarr" target="_blank">
+          <img src="instagram.png" alt="Görsel 1">
+        </a>
+        <p>elektronikpazarr</p>
+      </div>
+      <div class="image-text-box">
+        <a href="https://www.youtube.com/@Elektronikpazar.1" target="_blank">
+          <img src="youtube.png" alt="Görsel 2">
+        </a>
+        <p>elektronikpazar.1</p>
+      </div>
+      <div class="image-text-box">
+        <a href="https://twitter.com/elektronikpzr" target="_blank">
+          <img src="twitter.png" alt="Görsel 3">
+        </a>
+        <p>elektronikpzr</p>
+      </div>
+      <div class="image-text-box">
+        <a href="https://www.tiktok.com/@elektronikpazarrr" target="_blank">
+          <img src="social-media.png" alt="Görsel 4">
+        </a>
+        <p>elektronikpazarrr</p>
+      </div>
+    </div>
 
   </div>
 
@@ -272,7 +288,6 @@
 </body>
 </html>
 
-</html>
 
 
 
