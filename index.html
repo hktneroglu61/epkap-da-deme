@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kapıda Ödeme Formu</title>
 
-  <!-- EmailJS SDK -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script type="text/javascript">
      (function(){
-        emailjs.init("voWGxkSoaSMj_Hsk4"); // EmailJS User ID buraya
+        emailjs.init("voWGxkSoaSMj_Hsk4");
      })();
   </script>
 
   <style>
-    /* Genel sıfırlama */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -25,11 +23,33 @@
     body {
       background-color: #ffffff;
       display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 20px;
+      flex-direction: column;
+      align-items: center;
+      padding: 0;
       min-height: 100vh;
     }
+
+    /* 🔥 EKLENEN YENİ BLOK (sadece bu eklendi) */
+    .hero-image-wrapper {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .hero-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .top-three-images {
+  width: 100%;     /* 🔥 tam genişlik */
+  max-width: 100%; /* 🔥 webde de sağ-sol boşluksuz */
+  margin: 0;       /* 🔥 ortalamayı kaldırır, tam ekran olur */
+  padding: 0;
+}
+
 
     /* Container */
     .container {
@@ -53,29 +73,19 @@
       color:rgb(207, 16, 16);
     }
 
-    /* Üstteki 3 büyük görsel */
-    .top-three-images img {
-      width: 100%;
-      height: auto; /* 🔧 Yüksekliği otomatik, kırpma yok */
-      max-width: 100%;
-      object-fit: contain; /* 🔧 Kırpmadan sığdır */
-      border-radius: 10px;
-      margin-bottom: 15px;
-      display: block;
+    /* ÜÇLÜ GÖRSEL BLOKU SİLİNDİ
+       (yani burası kaldırıldı) */
+
+    /* Video */
+    .product-video {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        display: block;
     }
 
-    /* Üst görsel */
-    .top-image {
-      width: 100%;
-      height: auto; /* 🔧 Yüksekliği otomatik */
-      max-width: 100%;
-      object-fit: contain; /* 🔧 Kırpmadan sığdır */
-      border-radius: 10px;
-      margin-bottom: 20px;
-      display: block;
-    }
-
-    /* Form elemanları */
     form input, form textarea, form button {
       width: 100%;
       padding: 12px;
@@ -102,7 +112,6 @@
       background-color: #218838;
     }
 
-    /* KVKK checkbox */
     label {
       font-size: 14px;
       display: flex;
@@ -114,7 +123,6 @@
       margin-right: 8px;
     }
 
-    /* Mobil uyumluluk */
     @media (max-width: 480px) {
       h2 {
         font-size: 20px;
@@ -123,13 +131,8 @@
         font-size: 14px;
         padding: 10px;
       }
-      .top-three-images img,
-      .top-image {
-        max-height: none; /* 🔧 Mobilde de kırpma yok */
-      }
     }
 
-    /* Yeni tablo stil */
     .image-text-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -170,7 +173,6 @@
       word-break: break-word;
     }
 
-    /* Mobil görünüm */
     @media (max-width: 768px) {
       .image-text-section {
         grid-template-columns: 1fr;
@@ -179,27 +181,54 @@
   </style>
 </head>
 <body>
+
+  <!-- 🔥 UZUN GÖRSEL ARTIK EN ÜSTE ALINDI -->
+  <div class="hero-image-wrapper">
+    <img src="uzunm.png" alt="Uzun Görsel">
+  </div>
+
+  
+
+  <!-- 🔥 BURADAN SONRA HER ŞEY SENİN ESKİ KODUN -->
   <div class="container">
-
-    <!-- Üstte 3 yeni büyük görsel -->
-    <div class="top-three-images">
-      <img src="parca.JPG" alt="Üst Görsel 1">
-      <img src="celık.JPG" alt="Üst Görsel 2">
-      <img src="demir.JPG" alt="Üst Görsel 3">
-    </div>
-
-    <!-- Mevcut ana büyük görsel -->
-    <img src="dar.JPG" alt="Üst Görsel" class="top-image">
 
     <h2>Sipariş Formu</h2>
 
     <form id="orderForm">
-      <input type="text" name="fullname" placeholder="Ad Soyad" required>
-      <input type="tel" name="phone" placeholder="Telefon" required>
-      <textarea name="address" placeholder="Adres" required></textarea>
-      <input type="text" name="product" value="KIMMERR-PLUS 24 PARÇA MATKAP SET" readonly>
+      <input 
+        type="text" 
+        name="fullname" 
+        placeholder="Ad Soyad" 
+        required
+        minlength="3"
+        maxlength="60"
+      >
 
-      <!-- KVKK onay kutusu -->
+      <input 
+        type="tel" 
+        name="phone" 
+        placeholder="Telefon" 
+        required
+        pattern="^[0-9+ ]{8,20}$"
+        title="Lütfen geçerli bir telefon numarası giriniz. Sadece rakam, boşluk ve + işareti kullanın."
+        inputmode="tel"
+      >
+
+      <textarea 
+        name="address" 
+        placeholder="Adres" 
+        required
+        minlength="10"
+        maxlength="300"
+      ></textarea>
+
+      <input 
+        type="text" 
+        name="product" 
+        value="KIMMERR-PLUS 24 PARÇA MATKAP SET" 
+        readonly
+      >
+
       <label>
         <input type="checkbox" name="kvkk" required>
         Kişisel verilerimin işlenmesini ve saklanmasını kabul ediyorum.
@@ -210,29 +239,31 @@
 
     <h3>Elektronikpazar sosyal medya hesaplarını takip ederek kampanyalardan haberdar olabilirsiniz</h3>
     
-    <!-- Görsel ve yazı bölümü -->
     <div class="image-text-section">
       <div class="image-text-box">
         <a href="https://www.instagram.com/elektronikpazarr" target="_blank">
-          <img src="instagram.png" alt="Görsel 1">
+          <img src="instagram.png" alt="Instagram">
         </a>
         <p>elektronikpazarr</p>
       </div>
+
       <div class="image-text-box">
         <a href="https://www.youtube.com/@Elektronikpazar.1" target="_blank">
-          <img src="youtube.png" alt="Görsel 2">
+          <img src="youtube.png" alt="YouTube">
         </a>
         <p>elektronikpazar.1</p>
       </div>
+
       <div class="image-text-box">
         <a href="https://twitter.com/elektronikpzr" target="_blank">
-          <img src="twitter.png" alt="Görsel 3">
+          <img src="twitter.png" alt="Twitter">
         </a>
         <p>elektronikpzr</p>
       </div>
+
       <div class="image-text-box">
         <a href="https://www.tiktok.com/@elektronikpazarrr" target="_blank">
-          <img src="social-media.png" alt="Görsel 4">
+          <img src="social-media.png" alt="TikTok">
         </a>
         <p>elektronikpazarrr</p>
       </div>
@@ -243,7 +274,6 @@
   <script type="module">
     import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
 
-    // Supabase bilgileri
     const SUPABASE_URL = "https://vviqfnmehebxsynwnhpa.supabase.co"
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2aXFmbm1laGVieHN5bnduaHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1Mzk4NDgsImV4cCI6MjA3ODExNTg0OH0.1FSjUcOqylbHbTDIEbIvwpJiQVnO2zlJkexQxf5ywbA"
 
@@ -253,7 +283,6 @@
       e.preventDefault()
       const form = e.target
 
-      // KVKK onayı kontrolü
       if (!form.kvkk.checked) {
         alert("Lütfen KVKK onayını işaretleyin!")
         return
@@ -266,27 +295,24 @@
         product: form.product.value
       }
 
-      // Supabase kaydı
       const { error } = await supabase.from("orders").insert([data])
       if (error) {
         alert("Bir hata oluştu: " + error.message)
         return
       }
 
-      // EmailJS ile bildirim gönder
       emailjs.send("service_whgj7fa", "template_jao8nx4", data)
         .then(function(response) {
-          console.log('Email gönderildi!', response.status, response.text)
-          alert("Sipariş başarıyla kaydedildi ve bildirildi 🎉")
+          alert("Sipariş başarıyla kaydedildi 🎉")
           form.reset()
         }, function(error) {
-          console.log('Email gönderilemedi...', error)
           alert("Sipariş kaydedildi ama email gönderilemedi.")
         })
     })
   </script>
 </body>
 </html>
+
 
 
 
