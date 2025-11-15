@@ -294,8 +294,9 @@
 
   <!-- Üst uzun görsel -->
   <div class="hero-image-wrapper">
-    <img src="uzunm61.jpg" alt="Uzun Görsel">
+    <img src="uzunm61.jpg" alt="Uzun Görsel" onclick="scrollToForm()" style="cursor: pointer;">
   </div>
+  
 
   <div class="container">
 
@@ -1148,6 +1149,13 @@
       }
     })
   </script>
+  <script>
+    function scrollToForm() {
+      const formSection = document.getElementById("orderForm");
+      formSection.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+  
 </body>
 </html>
 
