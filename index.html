@@ -29,7 +29,7 @@
       min-height: 100vh;
     }
 
-    /* 🔥 EKLENEN YENİ BLOK (sadece bu eklendi) */
+    /* Üst uzun görsel */
     .hero-image-wrapper {
       width: 100%;
       max-width: 100%;
@@ -44,19 +44,18 @@
     }
 
     .top-three-images {
-  width: 100%;     /* 🔥 tam genişlik */
-  max-width: 100%; /* 🔥 webde de sağ-sol boşluksuz */
-  margin: 0;       /* 🔥 ortalamayı kaldırır, tam ekran olur */
-  padding: 0;
-}
-
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
     /* Container */
     .container {
       background-color: #ffffff;
-      max-width: 500px;
+      max-width: 900px;
       width: 100%;
-      padding: 20px;
+      padding: 20px 30px 40px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
@@ -69,30 +68,79 @@
 
     h3 {
       text-align: center;
+      margin-top: 30px;
       margin-bottom: 20px;
-      color:rgb(207, 16, 16);
+      color: rgb(207, 16, 16);
     }
 
-    /* ÜÇLÜ GÖRSEL BLOKU SİLİNDİ
-       (yani burası kaldırıldı) */
-
-    /* Video */
-    .product-video {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        display: block;
+    /* Başlık şeritleri */
+    .section-title {
+      background-color: #00362f;
+      color: #ffffff;
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 10px 0 20px;
     }
 
-    form input, form textarea, form button {
+    /* Satır yapısı */
+    .form-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      column-gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 14px;
+      color: #000;
+    }
+
+    .form-label .colon {
+      margin: 0 4px;
+    }
+
+    .form-input-area {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      column-gap: 6px;
+      align-items: flex-start;
+    }
+
+    .form-input-main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .required-star {
+      color: #e30000;
+      font-size: 18px;
+      line-height: 1;
+      margin-top: 6px;
+    }
+
+    .help-text {
+      font-size: 12px;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    /* input + select stil */
+    form input,
+    form textarea,
+    form button,
+    form select {
       width: 100%;
       padding: 12px;
-      margin-bottom: 15px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     form textarea {
@@ -100,18 +148,7 @@
       min-height: 80px;
     }
 
-    form button {
-      background-color: #28a745;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    form button:hover {
-      background-color: #218838;
-    }
-
+    /* Eski label ayarı KVKK için kullanılacak */
     label {
       font-size: 14px;
       display: flex;
@@ -123,16 +160,89 @@
       margin-right: 8px;
     }
 
+    /* Ödeme şekli alanı */
+    .payment-options {
+      margin-bottom: 20px;
+      padding-left: 15px;
+    }
+
+    .payment-options label {
+      margin-bottom: 6px;
+    }
+
+    .payment-options input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    /* Sözleşme kutusu */
+    .terms-box {
+      background-color: #f5f5f5;
+      border-radius: 6px;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      font-size: 13px;
+    }
+
+    .terms-box input[type="checkbox"] {
+      margin-right: 8px;
+      margin-top: 2px;
+    }
+
+    .terms-box a {
+      color: #0066cc;
+      text-decoration: underline;
+    }
+
+    /* Gönder butonu – geniş mavi */
+    form button {
+      background-color: #4a81c4;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 14px;
+    }
+
+    form button:hover {
+      background-color: #3c6aa0;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px 10px 30px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .form-label {
+        margin-bottom: 4px;
+      }
+      .form-input-area {
+        grid-template-columns: 1fr;
+      }
+      .required-star {
+        margin-top: 0;
+      }
+    }
+
     @media (max-width: 480px) {
       h2 {
         font-size: 20px;
       }
-      form input, form textarea, form button {
+      form input,
+      form textarea,
+      form button,
+      form select {
         font-size: 14px;
         padding: 10px;
       }
     }
 
+    /* Sosyal medya kutuları */
     .image-text-section {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -182,63 +292,278 @@
 </head>
 <body>
 
-  <!-- 🔥 UZUN GÖRSEL ARTIK EN ÜSTE ALINDI -->
+  <!-- Üst uzun görsel -->
   <div class="hero-image-wrapper">
     <img src="uzunm61.jpg" alt="Uzun Görsel">
   </div>
 
-  
-
-  <!-- 🔥 BURADAN SONRA HER ŞEY SENİN ESKİ KODUN -->
   <div class="container">
 
-    <h2>Sipariş Formu</h2>
+    <!-- Teslimat Bilgileriniz -->
+    <div class="section-title">Teslimat Bilgileriniz</div>
 
     <form id="orderForm">
-      <input 
-        type="text" 
-        name="fullname" 
-        placeholder="Ad Soyad" 
-        required
-        minlength="3"
-        maxlength="60"
-      >
 
-      <input 
-        type="tel" 
-        name="phone" 
-        placeholder="Telefon" 
-        required
-        pattern="^[0-9+ ]{8,20}$"
-        title="Lütfen geçerli bir telefon numarası giriniz. Sadece rakam, boşluk ve + işareti kullanın."
-        inputmode="tel"
-      >
+      <!-- Ad Soyad -->
+      <div class="form-row">
+        <div class="form-label">
+          <span>Adınız Soyadınız</span>
+          <span class="colon">:</span>
+        </div>
+        <div class="form-input-area">
+          <div class="form-input-main">
+            <input
+              type="text"
+              name="fullname"
+              placeholder="Ad Soyad"
+              required
+              minlength="3"
+              maxlength="60"
+            >
+            <span class="help-text">Teslimatın yapılacağı kişi.</span>
+          </div>
+          <span class="required-star">*</span>
+        </div>
+      </div>
 
-      <textarea 
-        name="address" 
-        placeholder="Adres" 
-        required
-        minlength="10"
-        maxlength="300"
-      ></textarea>
+      <!-- Telefon 🔥 sadece rakam, 10 hane -->
+      <div class="form-row">
+        <div class="form-label">
+          <span>Telefon Numaranız</span>
+          <span class="colon">:</span>
+        </div>
+        <div class="form-input-area">
+          <div class="form-input-main">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Başında 0 olmadan 10 hane olarak giriniz."
+              required
+              minlength="10"
+              maxlength="10"
+              pattern="^[0-9]{10}$"
+              title="Lütfen başında 0 olmadan 10 haneli bir telefon numarası giriniz."
+              inputmode="numeric"
+              oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,10);"
+            >
+            <span class="help-text">Teslimat öncesi size ulaşmak için kullanılacak telefon numarası.</span>
+          </div>
+          <span class="required-star">*</span>
+        </div>
+      </div>
 
-      <input 
-        type="text" 
-        name="product" 
-        value="KIMMERR-PLUS 24 PARÇA MATKAP SET" 
-        readonly
-      >
+      <!-- Adres -->
+      <div class="form-row">
+        <div class="form-label">
+          <span>Adresiniz</span>
+          <span class="colon">:</span>
+        </div>
+        <div class="form-input-area">
+          <div class="form-input-main">
+            <textarea
+              name="address"
+              placeholder="Teslimatın yapılmasını istediğiniz adresi lütfen açık bir şekilde belirtiniz."
+              required
+              minlength="10"
+              maxlength="140"
+            ></textarea>
+            <span class="help-text">Teslimatın yapılmasını istediğiniz adres.</span>
+          </div>
+          <span class="required-star">*</span>
+        </div>
+      </div>
 
-      <label>
-        <input type="checkbox" name="kvkk" required>
-        Kişisel verilerimin işlenmesini ve saklanmasını kabul ediyorum.
-      </label>
+      <!-- İlçe (ARTIK SELECT) -->
+      <div class="form-row">
+        <div class="form-label">
+          <span>İlçe</span>
+          <span class="colon">:</span>
+        </div>
+        <div class="form-input-area">
+          <div class="form-input-main">
+            <select name="district" id="district" required>
+              <option value="">İlçe Seçiniz</option>
+            </select>
+            <span class="help-text">Teslimatın yapılacağı ilçe.</span>
+          </div>
+          <span class="required-star">*</span>
+        </div>
+      </div>
 
-      <button type="submit">Gönder</button>
+      <!-- Şehir (id ve onchange eklendi) -->
+      <div class="form-row">
+        <div class="form-label">
+          <span>Şehir</span>
+          <span class="colon">:</span>
+        </div>
+        <div class="form-input-area">
+          <div class="form-input-main">
+            <select name="city" id="city" required onchange="guncelleIlce()">
+              <option value="">Şehir Seçiniz</option>
+              <option value="Adana">Adana</option>
+              <option value="Adıyaman">Adıyaman</option>
+              <option value="Afyonkarahisar">Afyonkarahisar</option>
+              <option value="Ağrı">Ağrı</option>
+              <option value="Amasya">Amasya</option>
+              <option value="Ankara">Ankara</option>
+              <option value="Antalya">Antalya</option>
+              <option value="Artvin">Artvin</option>
+              <option value="Aydın">Aydın</option>
+              <option value="Balıkesir">Balıkesir</option>
+              <option value="Bilecik">Bilecik</option>
+              <option value="Bingöl">Bingöl</option>
+              <option value="Bitlis">Bitlis</option>
+              <option value="Bolu">Bolu</option>
+              <option value="Burdur">Burdur</option>
+              <option value="Bursa">Bursa</option>
+              <option value="Çanakkale">Çanakkale</option>
+              <option value="Çankırı">Çankırı</option>
+              <option value="Çorum">Çorum</option>
+              <option value="Denizli">Denizli</option>
+              <option value="Diyarbakır">Diyarbakır</option>
+              <option value="Edirne">Edirne</option>
+              <option value="Elazığ">Elazığ</option>
+              <option value="Erzincan">Erzincan</option>
+              <option value="Erzurum">Erzurum</option>
+              <option value="Eskişehir">Eskişehir</option>
+              <option value="Gaziantep">Gaziantep</option>
+              <option value="Giresun">Giresun</option>
+              <option value="Gümüşhane">Gümüşhane</option>
+              <option value="Hakkari">Hakkari</option>
+              <option value="Hatay">Hatay</option>
+              <option value="Isparta">Isparta</option>
+              <option value="Mersin">Mersin</option>
+              <option value="İstanbul">İstanbul</option>
+              <option value="İzmir">İzmir</option>
+              <option value="Kars">Kars</option>
+              <option value="Kastamonu">Kastamonu</option>
+              <option value="Kayseri">Kayseri</option>
+              <option value="Kırklareli">Kırklareli</option>
+              <option value="Kırşehir">Kırşehir</option>
+              <option value="Kocaeli">Kocaeli</option>
+              <option value="Konya">Konya</option>
+              <option value="Kütahya">Kütahya</option>
+              <option value="Malatya">Malatya</option>
+              <option value="Manisa">Manisa</option>
+              <option value="Kahramanmaraş">Kahramanmaraş</option>
+              <option value="Mardin">Mardin</option>
+              <option value="Muğla">Muğla</option>
+              <option value="Muş">Muş</option>
+              <option value="Nevşehir">Nevşehir</option>
+              <option value="Niğde">Niğde</option>
+              <option value="Ordu">Ordu</option>
+              <option value="Rize">Rize</option>
+              <option value="Sakarya">Sakarya</option>
+              <option value="Samsun">Samsun</option>
+              <option value="Siirt">Siirt</option>
+              <option value="Sinop">Sinop</option>
+              <option value="Sivas">Sivas</option>
+              <option value="Tekirdağ">Tekirdağ</option>
+              <option value="Tokat">Tokat</option>
+              <option value="Trabzon">Trabzon</option>
+              <option value="Tunceli">Tunceli</option>
+              <option value="Şanlıurfa">Şanlıurfa</option>
+              <option value="Uşak">Uşak</option>
+              <option value="Van">Van</option>
+              <option value="Yozgat">Yozgat</option>
+              <option value="Zonguldak">Zonguldak</option>
+              <option value="Aksaray">Aksaray</option>
+              <option value="Bayburt">Bayburt</option>
+              <option value="Karaman">Karaman</option>
+              <option value="Kırıkkale">Kırıkkale</option>
+              <option value="Batman">Batman</option>
+              <option value="Şırnak">Şırnak</option>
+              <option value="Bartın">Bartın</option>
+              <option value="Ardahan">Ardahan</option>
+              <option value="Iğdır">Iğdır</option>
+              <option value="Yalova">Yalova</option>
+              <option value="Karabük">Karabük</option>
+              <option value="Kilis">Kilis</option>
+              <option value="Osmaniye">Osmaniye</option>
+              <option value="Düzce">Düzce</option>
+            </select>
+            <span class="help-text">Teslimatın yapılacağı şehir.</span>
+          </div>
+          <span class="required-star">*</span>
+        </div>
+      </div>
+
+      <!-- Ürün -->
+      <div class="form-row">
+        <div class="form-label">
+          <span>Siparişiniz</span>
+          <span class="colon">:</span>
+        </div>
+        <div class="form-input-area">
+          <div class="form-input-main">
+            <input
+              type="text"
+              name="product"
+              value="KIMMERR-PLUS 24 PARÇA MATKAP SET"
+              readonly
+            >
+            <span class="help-text">Satın almak istediğiniz ürün.</span>
+          </div>
+          <span class="required-star"></span>
+        </div>
+      </div>
+
+            <!-- Adet -->
+            <div class="form-row">
+                <div class="form-label">
+                  <span>Adet</span>
+                  <span class="colon">:</span>
+                </div>
+                <div class="form-input-area">
+                  <div class="form-input-main">
+                    <input
+                      type="number"
+                      name="quantity"
+                      min="1"
+                      max="10"
+                      value="1"
+                      required
+                      inputmode="numeric"
+                      oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value === '' || this.value === '0'){ this.value = '1'; }"
+                    >
+                    <span class="help-text">Kaç adet ürün sipariş etmek istiyorsunuz?</span>
+                  </div>
+                  <span class="required-star">*</span>
+                </div>
+              </div>
+        
+
+      <!-- Ödeme Şekli -->
+      <div class="section-title">Ödeme Şekli</div>
+
+      <div class="payment-options">
+        <label>
+          <input type="radio" name="payment_type" value="Kapıda Nakit Ödeme" checked>
+          Kapıda Nakit Ödeme
+        </label>
+        <label>
+          <input type="radio" name="payment_type" value="Kapıda Kredi Kartı ile Öde">
+          Kapıda Kredi Kartı ile Öde
+        </label>
+      </div>
+
+      <!-- Sözleşme ve KVKK -->
+      <div class="terms-box">
+        <label>
+          <input type="checkbox" name="kvkk" required>
+          <span>
+            <a href="#" target="_blank">Mesafeli Satış Sözleşmesini</a> okudum ve kişisel verilerimin
+            işlenmesini ve saklanmasını kabul ediyorum.
+          </span>
+        </label>
+      </div>
+
+      <!-- Gönder butonu -->
+      <button type="submit">SİPARİŞİMİ GÖNDER</button>
     </form>
 
     <h3>Elektronikpazar sosyal medya hesaplarını takip ederek kampanyalardan haberdar olabilirsiniz</h3>
-    
+
     <div class="image-text-section">
       <div class="image-text-box">
         <a href="https://www.instagram.com/elektronikpazarr" target="_blank">
@@ -271,47 +596,561 @@
 
   </div>
 
-  <script type="module">
-    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+  <!-- 🔥 İL–İLÇE JS (Supabase scriptinden ÖNCE) -->
+  <script>
+    const ilceler = {
+"Adana": [
+  "Seyhan", "Yüreğir", "Çukurova", "Sarıçam", "Ceyhan", "Kozan", 
+  "İmamoğlu", "Karataş", "Pozantı", "Saimbeyli", "Tufanbeyli", 
+  "Yumurtalık", "Aladağ", "Feke"
+],
 
+"Adıyaman": [
+  "Merkez", "Kahta", "Besni", "Gölbaşı", "Gerger", 
+  "Tut", "Samsat", "Sincik", "Çelikhan"
+],
+
+"Afyonkarahisar": [
+  "Merkez", "Sandıklı", "Dinar", "Emirdağ", "Bolvadin", "Çay", 
+  "Şuhut", "İscehisar", "Sultandağı", "Sinanpaşa", "İhsaniye", 
+  "Başmakçı", "Bayat", "Hocalar", "Kızılören"
+],
+
+"Ağrı": [
+  "Merkez", "Patnos", "Doğubayazıt", "Eleşkirt", "Diyadin", 
+  "Hamur", "Taşlıçay", "Tutak"
+],
+
+"Aksaray": [
+  "Merkez", "Eskil", "Gülağaç", "Güzelyurt", 
+  "Ortaköy", "Sarıyahşi", "Ağaçören", "Sultanhanı"
+],
+
+"Amasya": [
+  "Merkez", "Merzifon", "Suluova", "Taşova", 
+  "Gümüşhacıköy", "Hamamözü", "Göynücek"
+],
+
+"Ankara": [
+  "Çankaya", "Keçiören", "Sincan", "Yenimahalle", "Mamak", 
+  "Etimesgut", "Altındağ", "Pursaklar", "Gölbaşı", "Polatlı", 
+  "Beypazarı", "Nallıhan", "Kızılcahamam", "Haymana", "Ayaş",
+  "Elmadağ", "Akyurt", "Şereflikoçhisar", "Bala", "Kalecik", 
+  "Güdül", "Çubuk", "Evren"
+],
+
+"Antalya": [
+  "Muratpaşa", "Kepez", "Konyaaltı", "Alanya", "Manavgat",
+  "Serik", "Kemer", "Korkuteli", "Elmalı", "Finike",
+  "Gazipaşa", "Döşemealtı", "Aksu", "Kaş", "Demre",
+  "Kumluca", "Gündoğmuş", "İbradı", "Akseki"
+],
+
+"Ardahan": [
+  "Merkez", "Göle", "Hanak", "Posof", "Çıldır", "Damal"
+],
+
+"Artvin": [
+  "Merkez", "Hopa", "Arhavi", "Borçka", 
+  "Yusufeli", "Şavşat", "Ardanuç", "Murgul"
+],
+
+"Aydın": [
+  "Efeler", "Nazilli", "Söke", "Didim", "Kuşadası",
+  "İncirliova", "Germencik", "Bozdoğan", "Koçarlı", 
+  "Çine", "Karpuzlu", "Kuyucak", "Sultanhisar",
+  "Yenipazar", "Karacasu", "Buharkent"
+],
+
+"Balıkesir": [
+  "Karesi", "Altıeylül", "Bandırma", "Edremit", "Gömeç",
+  "Burhaniye", "Ayvalık", "Bigadiç", "Dursunbey", "Erdek",
+  "Gönen", "Havran", "İvrindi", "Kepsut", "Manyas",
+  "Marmara", "Savaştepe", "Sındırgı", "Susurluk"
+],
+
+"Bartın": [
+  "Merkez", "Amasra", "Ulus", "Kurucaşile"
+],
+
+"Batman": [
+  "Merkez", "Kozluk", "Sason", "Beşiri", 
+  "Gercüş", "Hasankeyf"
+],
+
+"Bayburt": [
+  "Merkez", "Aydıntepe", "Demirözü"
+],
+
+"Bilecik": [
+  "Merkez", "Bozüyük", "Söğüt", "Osmaneli",
+  "Pazaryeri", "Gölpazarı", "Yenipazar", "İnhisar"
+],
+
+"Bingöl": [
+  "Merkez", "Genç", "Karlıova", "Solhan",
+  "Adaklı", "Kiğı", "Yayladere", "Yedisu"
+],
+
+"Bitlis": [
+  "Merkez", "Tatvan", "Ahlat", "Güroymak",
+  "Mutki", "Hizan", "Adilcevaz"
+],
+
+"Bolu": [
+  "Merkez", "Gerede", "Göynük", "Mengen",
+  "Mudurnu", "Kıbrıscık", "Dörtdivan",
+  "Yeniçağa", "Seben"
+],
+
+"Burdur": [
+  "Merkez", "Bucak", "Gölhisar", "Yeşilova",
+  "Tefenni", "Karamanlı", "Çavdır",
+  "Ağlasun", "Altınyayla", "Çeltikçi", "Kemer"
+],
+"Bursa": [
+  "Osmangazi", "Yıldırım", "Nilüfer", "Gemlik", "İnegöl",
+  "Mudanya", "Karacabey", "Kestel", "Mustafakemalpaşa",
+  "Orhaneli", "Orhangazi", "Büyükorhan", "Harmancık",
+  "Keles", "Yenişehir", "Gürsu"
+],
+
+"Çanakkale": [
+  "Merkez", "Biga", "Çan", "Ezine", "Ayvacık",
+  "Bayramiç", "Bozcaada", "Gökçeada", "Gelibolu",
+  "Lapseki", "Eceabat", "Yenice"
+],
+
+"Çankırı": [
+  "Merkez", "Ilgaz", "Çerkeş", "Şabanözü",
+  "Eldivan", "Kurşunlu", "Kızılırmak",
+  "Orta", "Bayramören", "Atkaracalar", "Korgun"
+],
+
+"Çorum": [
+  "Merkez", "Sungurlu", "Osmancık", "İskilip",
+  "Alaca", "Bayat", "Boğazkale", "Dodurga",
+  "Kargı", "Laçin", "Mecitözü", "Oğuzlar",
+  "Ortaköy", "Uğurludağ"
+],
+
+"Denizli": [
+  "Pamukkale", "Merkezefendi", "Acıpayam",
+  "Çivril", "Tavas", "Honaz", "Sarayköy",
+  "Kale", "Buldan", "Çal", "Çameli", "Bekilli",
+  "Bozkurt", "Güney", "Beyağaç", "Serinhisar",
+  "Babadağ"
+],
+
+"Diyarbakır": [
+  "Kayapınar", "Bağlar", "Yenişehir", "Sur",
+  "Ergani", "Çınar", "Silvan", "Lice",
+  "Hani", "Dicle", "Bismil", "Kulp",
+  "Hazro", "Çermik", "Çüngüş", "Kocaköy", "Eğil"
+],
+
+"Düzce": [
+  "Merkez", "Akçakoca", "Cumayeri", "Çilimli",
+  "Gölyaka", "Gümüşova", "Kaynaşlı", "Yığılca"
+],
+
+"Edirne": [
+  "Merkez", "Keşan", "Uzunköprü", "İpsala",
+  "Havsa", "Lalapaşa", "Meriç", "Süloğlu", "Enez"
+],
+
+"Elazığ": [
+  "Merkez", "Kovancılar", "Karakoçan", "Palu",
+  "Arıcak", "Alacakaya", "Baskil",
+  "Maden", "Sivrice"
+],
+
+"Erzincan": [
+  "Merkez", "Tercan", "Üzümlü", "Kemah",
+  "İliç", "Kemaliye", "Otlukbeli", "Refahiye"
+],
+"Erzurum": [
+  "Yakutiye", "Palandöken", "Aziziye", "Hınıs",
+  "Horasan", "Karaçoban", "Karayazı", "Köprüköy",
+  "Narman", "Oltu", "Olur", "Pasinler",
+  "Şenkaya", "Tekman", "Tortum", "Uzundere"
+],
+
+"Eskişehir": [
+  "Odunpazarı", "Tepebaşı", "Sivrihisar",
+  "Alpu", "Beylikova", "Çifteler", "Günyüzü",
+  "Han", "İnönü", "Mahmudiye", "Mihalgazi",
+  "Mihalıççık", "Seyitgazi"
+],
+
+"Gaziantep": [
+  "Şahinbey", "Şehitkamil", "Nizip", "İslahiye",
+  "Araban", "Karkamış", "Nurdağı", "Oğuzeli", "Yavuzeli"
+],
+
+"Giresun": [
+  "Merkez", "Bulancak", "Espiye", "Eynesil",
+  "Görele", "Keşap", "Şebinkarahisar", "Tirebolu",
+  "Yağlıdere", "Piraziz", "Çamoluk", "Çanakçı", "Doğankent"
+],
+
+"Gümüşhane": [
+  "Merkez", "Kelkit", "Şiran", "Torul",
+  "Köse", "Kürtün"
+],
+
+"Hakkari": [
+  "Merkez", "Yüksekova", "Çukurca", "Şemdinli", "Derecik"
+],
+
+"Hatay": [
+  "Antakya", "Defne", "İskenderun", "Arsuz",
+  "Kırıkhan", "Reyhanlı", "Belen", "Dörtyol",
+  "Erzin", "Hassa", "Kumlu", "Payas", "Samandağ",
+  "Altınözü", "Yayladağı"
+],
+
+"Isparta": [
+  "Merkez", "Yalvaç", "Eğirdir", "Şarkikaraağaç",
+  "Senirkent", "Keçiborlu", "Gelendost", "Sütçüler",
+  "Atabey", "Uluborlu", "Gönen", "Aksu", "Yenişarbademli"
+],
+
+"Mersin": [
+  "Akdeniz", "Toroslar", "Yenişehir", "Mezitli",
+  "Tarsus", "Çamlıyayla", "Erdemli",
+  "Mut", "Silifke", "Gülnar", "Aydıncık", "Bozyazı", "Anamur"
+],
+
+"İstanbul": [
+  "Kadıköy", "Üsküdar", "Ataşehir", "Beşiktaş",
+  "Şişli", "Fatih", "Esenyurt", "Küçükçekmece",
+  "Bakırköy", "Zeytinburnu", "Beykoz", "Sarıyer",
+  "Beylikdüzü", "Bahçelievler", "Avcılar", "Başakşehir",
+  "Sancaktepe", "Pendik", "Kartal", "Tuzla", "Maltepe",
+  "Ümraniye", "Gaziosmanpaşa", "Sultangazi", "Arnavutköy",
+  "Çekmeköy", "Silivri", "Çatalca", "Adalar"
+],
+"İzmir": [
+  "Konak", "Karşıyaka", "Buca", "Bornova",
+  "Bayraklı", "Gaziemir", "Çiğli", "Menemen",
+  "Balçova", "Narlıdere", "Karabağlar", "Torbalı",
+  "Foça", "Menderes", "Kemalpaşa", "Seferihisar",
+  "Urla", "Tire", "Ödemiş", "Bergama", "Dikili",
+  "Kınık", "Beydağ", "Kiraz"
+],
+
+"Kars": [
+  "Merkez", "Kağızman", "Sarıkamış", "Selim",
+  "Akyaka", "Arpaçay", "Digor", "Susuz"
+],
+
+"Kastamonu": [
+  "Merkez", "Tosya", "Taşköprü", "Cide",
+  "Dadıyat", "Araç", "İnebolu", "Küre",
+  "Bozkurt", "Çatalzeytin", "Devrekani",
+  "Doğanyurt", "Hanönü", "İhsangazi",
+  "Pınarbaşı", "Seydiler", "Şenpazar", "Azdavay"
+],
+
+"Kayseri": [
+  "Kocasinan", "Melikgazi", "Talas", "Develi",
+  "Bünyan", "İncesu", "Pınarbaşı", "Tomarza",
+  "Yahyalı", "Yeşilhisar", "Hacılar",
+  "Felahiye", "Özvatan", "Sarız", "Akkışla"
+],
+
+"Kırklareli": [
+  "Merkez", "Lüleburgaz", "Babaeski",
+  "Vize", "Pınarhisar", "Demirköy", "Kofçaz", "Pehlivanköy"
+],
+
+"Kırşehir": [
+  "Merkez", "Kaman", "Mucur",
+  "Akpınar", "Akçakent", "Boztepe", "Çiçekdağı"
+],
+
+"Kocaeli": [
+  "İzmit", "Gebze", "Darıca", "Çayırova",
+  "Körfez", "Gölcük", "Derince", "Kartepe",
+  "Başiskele", "Kandıra", "Karamürsel"
+],
+
+"Konya": [
+  "Selçuklu", "Meram", "Karatay", "Ereğli",
+  "Akşehir", "Beyşehir", "Seydişehir",
+  "Çumra", "Cihanbeyli", "Ilgın", "Kadınhanı",
+  "Kulu", "Sarayönü", "Yunak", "Doğanhisar",
+  "Derebucak", "Bozkır", "Hadim", "Taşkent",
+  "Ahırlı", "Altınekin", "Hüyük", "Mahmutlar"
+],
+
+"Kütahya": [
+  "Merkez", "Tavşanlı", "Simav", "Gediz",
+  "Emet", "Domaniç", "Çavdarhisar",
+  "Hisarcık", "Pazarlar", "Şaphane", "Altıntaş", "Aslanapa", "Dumlupınar"
+],
+
+"Malatya": [
+  "Yeşilyurt", "Battalgazi", "Doğanşehir",
+  "Darende", "Arapgir", "Arguvan", "Hekimhan",
+  "Kale", "Kuluncak", "Pütürge", "Doğanyol", "Yazıhan", "Akçadağ"
+],
+"Manisa": [
+  "Yunusemre", "Şehzadeler", "Turgutlu", "Akhisar",
+  "Soma", "Salihli", "Alaşehir", "Kula",
+  "Demirci", "Sarıgöl", "Gördes", "Kırkağaç",
+  "Köprübaşı", "Ahmetli", "Gölmarmara", "Selendi"
+],
+
+"Kahramanmaraş": [
+  "Onikişubat", "Dulkadiroğlu", "Elbistan",
+  "Afşin", "Göksun", "Pazarcık", "Andırın",
+  "Türkoğlu", "Çağlayancerit", "Nurhak", "Ekinözü"
+],
+
+"Mardin": [
+  "Artuklu", "Kızıltepe", "Midyat", "Nusaybin",
+  "Derik", "Mazıdağı", "Savur", "Ömerli",
+  "Dargeçit", "Yeşilli"
+],
+
+"Muğla": [
+  "Bodrum", "Marmaris", "Fethiye", "Milas",
+  "Köyceğiz", "Dalaman", "Ortaca", "Seydikemer",
+  "Yatağan", "Ula", "Datça"
+],
+
+"Muş": [
+  "Merkez", "Malazgirt", "Bulanık",
+  "Hasköy", "Korkut", "Varto"
+],
+
+"Nevşehir": [
+  "Merkez", "Ürgüp", "Avanos", "Gülşehir",
+  "Acıgöl", "Derinkuyu", "Kozaklı", "Hacıbektaş"
+],
+
+"Niğde": [
+  "Merkez", "Bor", "Çiftlik", "Altunhisar",
+  "Ulukışla", "Çamardı"
+],
+
+"Ordu": [
+  "Altınordu", "Ünye", "Fatsa", "Perşembe",
+  "Gölköy", "Aybastı", "Korgan", "Kumru",
+  "Mesudiye", "Gülyalı", "Ulubey", "Çatalpınar",
+  "Çamaş", "Kabataş"
+],
+
+"Rize": [
+  "Merkez", "Çayeli", "Pazar", "Ardeşen",
+  "Fındıklı", "İkizdere", "İyidere",
+  "Kalkandere", "Derepazarı", "Güneysu", "Hemşin", "Çamlıhemşin"
+],
+
+"Sakarya": [
+  "Adapazarı", "Serdivan", "Erenler", "Arifiye",
+  "Hendek", "Karasu", "Geyve", "Pamukova",
+  "Sapanca", "Akyazı", "Kocaali", "Taraklı",
+  "Ferizli", "Kaynarca", "Söğütlü"
+],
+"Samsun": [
+  "İlkadım", "Atakum", "Canik", "Bafra",
+  "Çarşamba", "Terme", "Vezirköprü", "Havza",
+  "Ladik", "Asarcık", "Alaçam", "19 Mayıs",
+  "Salıpazarı", "Ayvacık", "Kavak", "Yakakent"
+],
+
+"Siirt": [
+  "Merkez", "Kurtalan", "Pervari", "Baykan",
+  "Eruh", "Şirvan", "Tillo"
+],
+
+"Sinop": [
+  "Merkez", "Boyabat", "Gerze", "Durağan",
+  "Ayancık", "Erfelek", "Türkeli", "Saraydüzü", "Dikmen"
+],
+
+"Sivas": [
+  "Merkez", "Şarkışla", "Zara", "Suşehri",
+  "Kangal", "Yıldızeli", "Divriği", "Gemerek",
+  "Hafik", "İmranlı", "Gürün", "Koyulhisar",
+  "Ulaş", "Altınyayla", "Doğanşar", "Akıncılar", "Gölova"
+],
+
+"Tekirdağ": [
+  "Çorlu", "Süleymanpaşa", "Çerkezköy",
+  "Kapaklı", "Ergene", "Malkara", "Saray",
+  "Hayrabolu", "Muratlı", "Marmaraereğlisi", "Şarköy"
+],
+
+"Tokat": [
+  "Merkez", "Erbaa", "Niksar", "Turhal",
+  "Zile", "Reşadiye", "Almus", "Pazar",
+  "Sulusaray", "Artova", "Başçiftlik"
+],
+
+"Trabzon": [
+  "Ortahisar", "Akçaabat", "Vakfıkebir", "Araklı",
+  "Arsin", "Of", "Sürmene", "Maçka", "Çaykara",
+  "Tonya", "Düzköy", "Beşikdüzü", "Şalpazarı", "Köprübaşı", "Dernekpazarı"
+],
+
+"Tunceli": [
+  "Merkez", "Pertek", "Çemişgezek", "Hozat",
+  "Mazgirt", "Nazımiye", "Ovacık", "Pülümür"
+],
+
+"Şanlıurfa": [
+  "Eyyübiye", "Haliliye", "Karaköprü",
+  "Siverek", "Viranşehir", "Akçakale",
+  "Birecik", "Suruç", "Bozova", "Harran", "Ceylanpınar", "Halfeti"
+],
+
+"Uşak": [
+  "Merkez", "Eşme", "Banaz", "Sivaslı",
+  "Ulubey", "Karahallı"
+],
+"Van": [
+  "İpekyolu", "Edremit", "Tuşba", "Erciş",
+  "Özalp", "Çaldıran", "Muradiye", "Başkalе",
+  "Gürpınar", "Gevaş", "Bahçesaray", "Çatak"
+],
+
+"Yozgat": [
+  "Merkez", "Sorgun", "Akdağmadeni", "Boğazlıyan",
+  "Çayıralan", "Çekerek", "Sarıkaya", "Saraykent",
+  "Şefaatli", "Yenifakılı", "Aydıncık", "Kadışehri", "Yerköy"
+],
+
+"Zonguldak": [
+  "Merkez", "Ereğli", "Çaycuma",
+  "Devrek", "Gökçebey", "Kilimli", "Kozlu", "Alaplı"
+],
+
+"Aksaray": [
+  "Merkez", "Ağaçören", "Eskil", "Gülağaç",
+  "Güzelyurt", "Ortaköy", "Sarıyahşi", "Sultanhanı"
+],
+
+"Bayburt": [
+  "Merkez", "Aydıntepe", "Demirözü"
+],
+
+"Karaman": [
+  "Merkez", "Ermenek", "Ayrancı",
+  "Başyayla", "Kazımkarabekir", "Sarıveliler"
+],
+
+"Kırıkkale": [
+  "Merkez", "Keskin", "Delice",
+  "Sulakyurt", "Bahşılı", "Balışeyh",
+  "Karakeçili", "Yahşihan", "Çelebi"
+],
+
+"Batman": [
+  "Merkez", "Kozluk", "Sason",
+  "Beşiri", "Gercüş", "Hasankeyf"
+],
+
+"Şırnak": [
+  "Cizre", "Silopi", "İdil",
+  "Uludere", "Beytüşşebap", "Güçlükonak", "Merkez"
+],
+
+"Bartın": [
+  "Merkez", "Amasra", "Ulus", "Kurucaşile"
+],
+
+"Ardahan": [
+  "Merkez", "Göle", "Hanak",
+  "Posof", "Çıldır", "Damal"
+]
+
+
+    };
+
+    function guncelleIlce() {
+      const citySelect = document.getElementById("city");
+      const districtSelect = document.getElementById("district");
+      const secilenIl = citySelect.value;
+
+      districtSelect.innerHTML = "<option value=''>İlçe Seçiniz</option>";
+
+      if (ilceler[secilenIl]) {
+        ilceler[secilenIl].forEach(function (ilce) {
+          const opt = document.createElement("option");
+          opt.value = ilce;
+          opt.textContent = ilce;
+          districtSelect.appendChild(opt);
+        });
+      }
+    }
+  </script>
+
+<script type="module">
+    import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"
+  
     const SUPABASE_URL = "https://vviqfnmehebxsynwnhpa.supabase.co"
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2aXFmbm1laGVieHN5bnduaHBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1Mzk4NDgsImV4cCI6MjA3ODExNTg0OH0.1FSjUcOqylbHbTDIEbIvwpJiQVnO2zlJkexQxf5ywbA"
-
+  
     const supabase = createClient(SUPABASE_URL, SUPABASE_KEY)
-
-    document.querySelector("#orderForm").addEventListener("submit", async (e) => {
+  
+    const form = document.querySelector("#orderForm")
+    const submitButton = form.querySelector("button[type='submit']")
+  
+    form.addEventListener("submit", async (e) => {
       e.preventDefault()
-      const form = e.target
-
+  
+      // KVKK kontrolü
       if (!form.kvkk.checked) {
         alert("Lütfen KVKK onayını işaretleyin!")
         return
       }
-
+  
+      // Gönder butonunu kilitle
+      submitButton.disabled = true
+      submitButton.textContent = "Gönderiliyor..."
+  
+      // Supabase + EmailJS'e gidecek veri
       const data = {
         fullname: form.fullname.value,
         phone: form.phone.value,
         address: form.address.value,
-        product: form.product.value
+        city: form.city.value,
+        district: form.district.value,
+        product: form.product.value,
+        quantity: Number(form.quantity.value) || 1,
+        payment_type: form.payment_type.value, // 🔥 Ödeme tipi eklendi
+        submit_time: new Date().toLocaleString("tr-TR") // Opsiyonel: tarih/saat
       }
-
-      const { error } = await supabase.from("orders").insert([data])
-      if (error) {
-        alert("Bir hata oluştu: " + error.message)
-        return
+  
+      try {
+        // 1) Supabase'e kaydet
+        const { error } = await supabase.from("orders").insert([data])
+        if (error) {
+          throw new Error(error.message)
+        }
+  
+        // 2) EmailJS ile mail gönder
+        await emailjs.send("service_whgj7fa", "template_jao8nx4", data)
+  
+        alert("Sipariş başarıyla kaydedildi ve mail gönderildi 🎉")
+        form.reset()
+      } catch (err) {
+        console.error(err)
+        alert("Bir hata oluştu: " + err.message + "\nLütfen daha sonra tekrar deneyin.")
+      } finally {
+        // Butonu tekrar aktif et
+        submitButton.disabled = false
+        submitButton.textContent = "SİPARİŞİMİ GÖNDER"
       }
-
-      emailjs.send("service_whgj7fa", "template_jao8nx4", data)
-        .then(function(response) {
-          alert("Sipariş başarıyla kaydedildi 🎉")
-          form.reset()
-        }, function(error) {
-          alert("Sipariş kaydedildi ama email gönderilemedi.")
-        })
     })
   </script>
 </body>
 </html>
+
 
 
 
